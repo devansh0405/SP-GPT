@@ -82,7 +82,7 @@ const Sidebar = ({
                     <div className="module-info">
                       <span className="module-name">{module.order}. {module.name}</span>
                       <span className="module-topics">
-                        {module.submodules.length} topics
+                        {module.submodules.length} Submodules
                       </span>
                     </div>
                     {expandedModules.has(module._id) ? 
