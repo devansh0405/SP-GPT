@@ -1,0 +1,119 @@
+.main-content {
+  flex: 1;
+  background: #fafafa;
+  transition: all 0.3s ease;
+  min-height: 0;
+  overflow: auto;
+}
+
+.main-content.expanded {
+  margin-left: 0;
+}
+
+.content-split {
+  display: flex;
+  height: calc(100vh - 120px);
+  gap: 1px;
+  background: #e2e8f0;
+}
+
+.submodule-section {
+  flex: 1;
+  background: white;
+  overflow-y: auto;
+}
+
+.chatbot-section {
+  width: 400px;
+  background: white;
+  border-left: 1px solid #e2e8f0;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 0rem;
+  gap: 0.2rem;
+}
+
+.subject-welcome,
+.general-welcome {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.subject-welcome h2,
+.general-welcome h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.subject-welcome p,
+.general-welcome p {
+  color: #64748b;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.chatbot-full {
+  flex: 1;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .content-split {
+    flex-direction: column;
+  }
+  
+  .chatbot-section {
+    width: 100%;
+    height: 50vh;
+    border-left: none;
+    border-top: 1px solid #e2e8f0;
+  }
+  
+  .submodule-section {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-content {
+    padding: 1rem;
+    gap: 1rem;
+    height: calc(100vh - 100px);
+  }
+  
+  .subject-welcome,
+  .general-welcome {
+    padding: 1.5rem;
+  }
+  
+  .subject-welcome h2,
+  .general-welcome h2 {
+    font-size: 1.5rem;
+  }
+  
+  .subject-welcome p,
+  .general-welcome p {
+    font-size: 1rem;
+  }
+}

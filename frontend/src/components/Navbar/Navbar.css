@@ -1,0 +1,115 @@
+.navbar {
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.logo {
+  font-size: 35px;
+  font-weight: bolder;
+  color: #222;
+  text-decoration: none;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: #49557e;
+}
+
+.active {
+  border-bottom: 2px solid #49557e;
+  padding-bottom: 4px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.noti{
+  width: 30px;
+  height: 30px;
+}
+
+.navbar-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile_icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.nav-profile-dropdown {
+  position: absolute;
+  display: none;
+  right: 0;
+  top: 45px;
+  background: #fff2ef;
+  border: 1px solid tomato;
+  border-radius: 6px;
+  list-style: none;
+  padding: 12px 18px;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.navbar-profile:hover .nav-profile-dropdown, .nav-profile-dropdown:hover {
+  display: flex; 
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-profile-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav-profile-dropdown img {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 900px) {
+  .navbar-menu {
+    display: none;
+  }
+  .navbar {
+    padding: 10px 20px;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  .profile-icon {
+    width: 12px;
+    height: 12px;
+  }
+}

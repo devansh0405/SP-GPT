@@ -1,0 +1,59 @@
+.module-item{
+    width: 90%;
+    height: 500px;
+    margin: auto;
+    border-radius: 15px;
+    gap: 2px;
+    box-shadow: 0px 0px 10px #000015;
+    transition: 0.3s;
+    animation: fadeIn 1s;
+}
+.module-item-img{
+    width: 100%;
+    height: 300px;
+    border-radius: 15px 15px 0px 0px;
+}
+.module-item-info{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.module-item-name{
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.module-item-name p{
+    font-size: 20px;
+    font-weight: 600;
+}
+.module-item-desc{
+    color: #676767;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.module-item-info button{
+    font-size: 20px;
+    padding: 12px;
+    width: 130px;
+    border-radius: 10px;
+    background-color: #48adec;
+    border: none;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+/*.module-item-counter{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    gap: 10px;
+    padding: 6px;
+    border-radius: 50px;
+    background-color: white;
+}
+.food-item-counter img{
+    width: 30px;
+}*/

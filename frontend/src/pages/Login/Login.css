@@ -1,0 +1,83 @@
+.login {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: url('/login_background.jpg') no-repeat center center;
+    background-size: cover;
+    display: grid;
+}
+
+.login-container {
+    place-self: center;
+    width: max(23vw, 330px);
+    color: #808080;
+    background-color: rgba(8, 8, 162, 0.099); 
+    background-blend-mode: overlay;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.5s;
+}
+
+.login-title {
+    text-align: center;
+    color: black;
+}
+
+.login-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-inputs input,
+.login-inputs select {
+    outline: none;
+    border: 1px solid #c9c9c9;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #ffffffac;
+    color: #333;
+}
+
+.login-inputs select:focus,
+.login-inputs input:focus {
+    border-color: tomato;
+    box-shadow: 0 0 3px rgba(255, 99, 71, 0.5);
+}
+
+.login-container button {
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    background-color: tomato;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #e14c39;
+}
+
+.login-condition {
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: -15px;
+}
+
+.login-condition input {
+    margin-top: 5px;
+}
+
+.login p span {
+    color: tomato;
+    font-weight: 500;
+    cursor: pointer;
+}
