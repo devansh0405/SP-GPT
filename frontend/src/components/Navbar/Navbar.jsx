@@ -12,6 +12,10 @@ const Navbar = () => {
     const logout = () => {
       localStorage.removeItem("token");
       setToken("");
+      localStorage.removeItem("moodleToken");
+      localStorage.removeItem("moodleUsername");
+      localStorage.removeItem("moodlePassword");
+      sessionStorage.clear();
       navigate("/login");
     }
 

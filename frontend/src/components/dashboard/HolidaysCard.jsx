@@ -6,24 +6,24 @@ const holidays = [
   {
     id: 1,
     title: "Winter Break",
-    startDate: "Dec 22, 2024",
-    endDate: "Jan 8, 2025",
+    startDate: "Dec 17, 2025",
+    endDate: "Jan 19, 2026",
     type: "Academic Break",
-    daysLeft: 12,
+    daysLeft: 40,
   },
   {
     id: 2,
     title: "Republic Day",
-    startDate: "Jan 26, 2025",
-    endDate: "Jan 26, 2025",
+    startDate: "Jan 26, 2026",
+    endDate: "Jan 26, 2026",
     type: "National Holiday",
-    daysLeft: 36,
+    daysLeft: 76,
   },
   {
     id: 3,
     title: "Holi Festival",
-    startDate: "Mar 14, 2025",
-    endDate: "Mar 14, 2025",
+    startDate: "Mar 4, 2026",
+    endDate: "Mar 4, 2026",
     type: "Festival Holiday",
     daysLeft: 83,
   },
@@ -33,14 +33,14 @@ const HolidaysCard = () => {
   const nextHoliday = holidays[0];
 
   return (
-    <Card className="p-6 shadow-card">
+    <Card className="p-6 shadow-card w-full">
       <div className="flex items-center space-x-2 mb-4">
         <Calendar className="h-5 w-5 text-academic-success" />
         <h3 className="text-lg font-semibold">Holidays</h3>
       </div>
 
       {/* Next Holiday Highlight */}
-      <div className="p-4 mb-4 rounded-lg bg-gradient-secondary text-white">
+      <div className="p-4 mb-6 rounded-lg bg-gradient-to-r from-academic-primary to-academic-secondary text-white w-full">
         <div className="flex items-center space-x-2 mb-1">
           <Star className="h-4 w-4" />
           <span className="text-sm font-medium">Next Holiday</span>
@@ -56,12 +56,12 @@ const HolidaysCard = () => {
         </div>
       </div>
 
-      {/* All Holidays List */}
-      <div className="space-y-3">
+      {/* Holidays in a horizontal flex layout */}
+      <div className="flex flex-wrap gap-4 justify-between">
         {holidays.map((holiday) => (
           <div
             key={holiday.id}
-            className="p-3 rounded-lg border hover:shadow-md transition-shadow"
+            className="flex-1 min-w-[250px] p-4 rounded-lg border bg-white hover:shadow-md transition-shadow"
           >
             <div className="flex items-start justify-between mb-2">
               <div>
@@ -82,9 +82,8 @@ const HolidaysCard = () => {
         ))}
       </div>
 
-      {/* Academic Calendar Link */}
-      <div className="mt-4 pt-3 border-t">
-        <p className="text-sm text-muted-foreground text-center">
+      <div className="mt-6 pt-3 border-t text-center">
+        <p className="text-sm text-muted-foreground">
           View full academic calendar for more dates
         </p>
       </div>

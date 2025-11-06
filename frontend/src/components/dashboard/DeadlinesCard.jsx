@@ -1,43 +1,79 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "../ui/card";
 import { AlertTriangle, Clock } from "lucide-react";
-
-const deadlines = [
-  {
-    id: 1,
-    title: "Data Structures Project",
-    type: "Project",
-    dueDate: "Dec 12, 2024",
-    timeLeft: "2 days",
-    urgent: true,
-  },
-  {
-    id: 2,
-    title: "Database Management Exam",
-    type: "Exam",
-    dueDate: "Dec 14, 2024",
-    timeLeft: "4 days",
-    urgent: false,
-  },
-  {
-    id: 3,
-    title: "Network Security Assignment",
-    type: "Assignment",
-    dueDate: "Dec 16, 2024",
-    timeLeft: "6 days",
-    urgent: false,
-  },
-  {
-    id: 4,
-    title: "Web Dev Presentation",
-    type: "Presentation",
-    dueDate: "Dec 18, 2024",
-    timeLeft: "8 days",
-    urgent: false,
-  },
-];
+import { getAssignments } from "../../services/moodleAPI";
 
 const DeadlinesCard = () => {
+  const [deadlines, setDeadlines] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchDeadlines = async () => {
+      try {
+        setLoading(true);
+        const token = localStorage.getItem("moodleToken");
+        if (!token) throw new Error("No Moodle token found. Please log in first.");
+
+        const assignments = await getAssignments(token);
+
+        // Filter future assignments only
+        const upcoming = assignments
+          .filter((a) => new Date(a.dueDate) >= new Date())
+          .map((a) => ({
+            id: a.id,
+            title: a.name,
+            type: "Assignment",
+            dueDate: new Date(a.dueDate),
+          }))
+          .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+
+        // Mark as urgent if within 3 days
+        const now = new Date();
+        upcoming.forEach((a) => {
+          const diffDays = (new Date(a.dueDate) - now) / (1000 * 60 * 60 * 24);
+          a.urgent = diffDays <= 3;
+          a.timeLeft =
+            diffDays < 1
+              ? "Today"
+              : `${Math.ceil(diffDays)} day${diffDays > 1 ? "s" : ""}`;
+        });
+
+        setDeadlines(upcoming);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDeadlines();
+  }, []);
+
+  if (loading)
+    return (
+      <Card className="p-6 shadow-card text-center">
+        <p>Loading deadlines...</p>
+      </Card>
+    );
+
+  if (error)
+    return (
+      <Card className="p-6 shadow-card text-center">
+        <p className="text-academic-danger">{error}</p>
+      </Card>
+    );
+
+  if (!deadlines.length)
+    return (
+      <Card className="p-6 shadow-card text-center">
+        <h3 className="text-lg font-semibold mb-2">Upcoming Deadlines</h3>
+        <p className="text-muted-foreground text-sm">
+          No upcoming deadlines found.
+        </p>
+      </Card>
+    );
+
   const urgentDeadlines = deadlines.filter((d) => d.urgent);
 
   return (
@@ -71,21 +107,11 @@ const DeadlinesCard = () => {
                   <h4 className="font-medium text-sm">{deadline.title}</h4>
                 </div>
                 <div className="flex items-center justify-between text-xs">
-                  <span
-                    className={`px-2 py-1 rounded-full font-medium ${
-                      deadline.type === "Project"
-                        ? "bg-academic-secondary/20 text-academic-secondary"
-                        : deadline.type === "Exam"
-                        ? "bg-academic-danger/20 text-academic-danger"
-                        : deadline.type === "Assignment"
-                        ? "bg-academic-warning/20 text-academic-warning"
-                        : "bg-academic-accent/20 text-academic-accent"
-                    }`}
-                  >
+                  <span className="px-2 py-1 bg-academic-warning/10 text-academic-warning rounded-full">
                     {deadline.type}
                   </span>
                   <span className="text-muted-foreground">
-                    {deadline.dueDate}
+                    {deadline.dueDate.toDateString()}
                   </span>
                 </div>
               </div>
