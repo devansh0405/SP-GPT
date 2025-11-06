@@ -1,5 +1,5 @@
 import express from "express"
-import { getSubjects, getModulesForSubject, getSubmodule } from "../controllers/learningController.js";
+import { getSubjects, getModulesForSubject, getSubmodule, saveUserSelection } from "../controllers/learningController.js";
 
 const learningRouter = express.Router();
 
@@ -11,5 +11,8 @@ learningRouter.get("/subjects/:subjectId/modules", getModulesForSubject);
 
 // Get details of a single submodule
 learningRouter.get("/submodules/:submoduleId", getSubmodule);
+
+// Send subjectId and moduleId to backend api selection
+learningRouter.post("/selection", saveUserSelection);
 
 export default learningRouter;

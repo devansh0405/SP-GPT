@@ -8,6 +8,7 @@ import { StoreContext } from './Context/StoreContext'
 import Learning from './pages/Learning/Learning'
 import Academic from './pages/Academic/Academic'
 import Career from './pages/Career/Career'
+import "./index.css"
 
 const App = () => {
   const { token } = useContext(StoreContext);  

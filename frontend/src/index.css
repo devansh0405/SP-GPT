@@ -1,31 +1,42 @@
-*{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Outfit;
+  font-family: Outfit, sans-serif;
   scroll-behavior: smooth; 
 }
 
-body{
+body {
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
 
-.app{
+.app {
   width: 85%;
   margin: auto;
 }
 
 @keyframes fadeIn {
-  0%{
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
+  }
+}
+
+/* Optional: Add a utility class for the fadeIn animation */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
   }
 }

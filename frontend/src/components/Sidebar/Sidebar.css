@@ -100,6 +100,7 @@
   border-radius: 0.75rem;
   overflow: hidden;
   transition: border-color 0.2s, box-shadow 0.2s;
+  height: fit-content;
 }
 
 .module-item:hover {

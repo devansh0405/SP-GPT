@@ -4,6 +4,7 @@ import { connectDB } from './config/db.js'
 import "dotenv/config"
 import userRouter from "./routes/userRoute.js"
 import learningRouter from "./routes/learningRoute.js"
+import moodleRouter from "./routes/moodleRoute.js"
 
 //app config
 const app = express()
@@ -19,6 +20,7 @@ connectDB();
 //api endpoints
 app.use("/api/user",userRouter);
 app.use("/api/learning", learningRouter);
+app.use("/api/moodle", moodleRouter);
 
 app.get("/",(req, res)=>{
     res.send("API working")

@@ -56,3 +56,27 @@ export const getSubmodule = async (req, res) => {
     res.status(500).json({ success: false, message: "Server Error" });
   }
 };
+
+export const saveUserSelection = async (req, res) => {
+  try {
+    const { subjectId, moduleId } = req.body;
+
+    if (!subjectId || !moduleId) {
+      return res.status(400).json({ success: false, message: "subjectId and moduleId are required" });
+    }
+
+    console.log("User selected:", { subjectId, moduleId });
+
+    // Example placeholder: forward to ML model later
+    // const mlResponse = await axios.post("http://ml-model-service/predict", { subjectId, moduleId });
+
+    res.json({
+      success: true,
+      message: "Selection received successfully",
+      data: { subjectId, moduleId },
+    });
+  } catch (err) {
+    console.error("Error saving user selection:", err);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};

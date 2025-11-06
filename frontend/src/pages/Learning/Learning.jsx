@@ -70,10 +70,24 @@ const Learning = () => {
     fetchModulesForSubject(subject._id);
   };
 
-  const handleModuleSelect = (module) => {
-    setSelectedModule(module);
-    setSelectedSubmodule(null);
+  const handleModuleSelect = async (module) => {
+  setSelectedModule(module);
+  setSelectedSubmodule(null);
+
+    try {
+      // Send selected subject + module to backend
+      if (selectedSubject && selectedModule) {
+        await axios.post(`${API_BASE}/learning/selection`, {
+          subjectId: selectedSubject._id,
+          moduleId: selectedModule._id,
+        });
+        console.log("Selection sent successfully");
+      }
+    }catch (err) {
+      console.error("Error sending selection:", err);
+    }
   };
+
 
   const handleSubmoduleSelect = (submodule) => {
     setSelectedSubmodule(submodule);
