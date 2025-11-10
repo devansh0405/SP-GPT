@@ -9,6 +9,7 @@ import Learning from './pages/Learning/Learning'
 import Academic from './pages/Academic/Academic'
 import Career from './pages/Career/Career'
 import "./index.css"
+import Notifications from './pages/Notifications/Notifications'
 
 const App = () => {
   const { token } = useContext(StoreContext);  
@@ -43,6 +44,8 @@ const App = () => {
             path="/career-enhancement" 
             element={token ? <Career /> : <Navigate to="/login" replace />} 
           />
+
+          <Route path="/notifications" element={<Notifications />} />
         </Routes>
       </div>
 
