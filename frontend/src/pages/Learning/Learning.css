@@ -2,29 +2,37 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
 }
 
+/* Main layout */
 .main-container {
   flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: #f9fafb;
 }
 
 .content-wrapper {
   flex: 1;
   display: flex;
   position: relative;
-  min-height: 0;
+  background-color: #fff;
+  border-top: 1px solid #e2e8f0;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
-/* Loading States */
+/* Loading & Error */
 .loading-container,
 .error-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  min-height: 70vh;
   padding: 2rem;
 }
 
@@ -39,8 +47,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error-container h2 {
@@ -64,10 +76,11 @@
   background-color: #1d4ed8;
 }
 
+/* Sidebar toggle (mobile only) */
 .sidebar-toggle {
   display: none;
   position: fixed;
-  top: 120px;
+  top: 110px;
   left: 1rem;
   z-index: 1001;
   background: white;
@@ -89,9 +102,10 @@
   .sidebar-toggle {
     display: block;
   }
-  
+
   .content-wrapper {
-    position: relative;
+    margin: 1rem;
+    flex-direction: column;
   }
 }
 
@@ -99,8 +113,9 @@
   .main-container {
     padding: 0;
   }
-  
+
   .content-wrapper {
-    flex-direction: column;
+    margin: 0.5rem;
+    border-radius: 0.75rem;
   }
 }

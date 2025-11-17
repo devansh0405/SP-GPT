@@ -1,13 +1,116 @@
-.header-text h1 {
-    margin-top: 2.5rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    line-height: 1.2;
+.learning-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.header-text p {
-  font-size: 1rem;
-  opacity: 0.9;
-  line-height: 1.4;
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-circle {
+  width: 34px;
+  height: 34px;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.nav-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.nav-tabs::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.nav-tab {
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-tab:hover {
+  background-color: #f1f5f9;
+  color: #2563eb;
+}
+
+.nav-tab.active {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 600;
+}
+
+.no-subjects {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.open-textbook-btn button {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.open-textbook-btn button:hover {
+  background-color: #2563eb;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .learning-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .nav-tabs {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .open-textbook-btn {
+    align-self: flex-end;
+  }
 }

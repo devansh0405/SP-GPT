@@ -1,60 +1,102 @@
-.module-item{
-    width: 90%;
-    height: 500px;
-    margin: auto;
-    border-radius: 15px;
-    gap: 2px;
-    box-shadow: 0px 0px 10px #000015;
-    transition: 0.3s;
-    animation: fadeIn 1s;
+.module-item {
+  width: 90%;
+  max-width: 500px;
+  height: 560px;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 21, 0.15);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
 }
 
-.module-item-img{
+/* Hover animation */
+.module-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+.module-item-img-container {
+  flex-shrink: 0;
+}
+
+.module-item-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 15px 15px 0px 0px;
+}
+
+/* Info container */
+.module-item-info {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Name */
+.module-item-name {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.module-item-name p {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Description */
+.module-item-desc {
+  color: #676767;
+  font-size: 15px;
+  text-align: justify;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* Button container */
+.explore-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+/* Explore button */
+.module-item-info button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #48adec;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for button */
+.module-item-info button:hover {
+  background-color: #359cd8;
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .module-item {
     width: 100%;
-    height: 300px;
-    border-radius: 15px 15px 0px 0px;
-}
-.module-item-info{
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.module-item-name{
-    margin-bottom: 15px;
-    cursor: pointer;
-}
-.module-item-name p{
-    font-size: 20px;
-    font-weight: 600;
-}
-.module-item-desc{
-    color: #676767;
-    font-size: 15px;
-    margin-bottom: 15px;
-}
-.module-item-info button{
-    font-size: 20px;
-    padding: 12px;
-    width: 130px;
-    border-radius: 10px;
-    background-color: #48adec;
-    border: none;
-    align-self: flex-end;
-    cursor: pointer;
-}
+    height: auto;
+  }
 
-/*.module-item-counter{
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    gap: 10px;
-    padding: 6px;
-    border-radius: 50px;
-    background-color: white;
+  .module-item-img {
+    height: 250px;
+  }
+
+  .module-item-info button {
+    width: 100%;
+    justify-self: center;
+  }
 }
-.food-item-counter img{
-    width: 30px;
-}*/

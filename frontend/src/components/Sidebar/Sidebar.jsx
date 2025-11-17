@@ -1,6 +1,15 @@
-import React, { useState } from 'react';
-import { ChevronDown, ChevronRight, Menu, X, FileText, ExternalLink, Book, Download } from 'lucide-react';
-import './Sidebar.css';
+import React, { useState } from "react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Menu,
+  X,
+  FileText,
+  ExternalLink,
+  Book,
+  Download,
+} from "lucide-react";
+import "./Sidebar.css";
 
 const Sidebar = ({
   modules,
@@ -9,17 +18,14 @@ const Sidebar = ({
   onModuleSelect,
   onSubmoduleSelect,
   collapsed,
-  onToggleCollapse
+  onToggleCollapse,
 }) => {
   const [expandedModules, setExpandedModules] = useState(new Set());
 
   const toggleModule = (moduleId) => {
     const newExpanded = new Set(expandedModules);
-    if (newExpanded.has(moduleId)) {
-      newExpanded.delete(moduleId);
-    } else {
-      newExpanded.add(moduleId);
-    }
+    if (newExpanded.has(moduleId)) newExpanded.delete(moduleId);
+    else newExpanded.add(moduleId);
     setExpandedModules(newExpanded);
   };
 
@@ -30,43 +36,53 @@ const Sidebar = ({
 
   return (
     <>
-      <button 
-        className="sidebar-toggle"
-        onClick={onToggleCollapse}
-      >
-        {collapsed ? <Menu size={20} /> : <X size={20} />}
-      </button>
+      {/* Outside toggle button (when collapsed) */}
+      {collapsed && (
+        <button className="sidebar-toggle-outside" onClick={onToggleCollapse}>
+          <Menu size={22} />
+        </button>
+      )}
 
-      <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
-        <div className="sidebar-header">
-          <h3>Important Links</h3>
-          <div className="important-links">
-            <div className="materials-grid first">
-              <button className="material-btn">
-                <FileText size={16} />
-                Syllabus
+      {/* Main Sidebar */}
+      <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
+        <div className="sidebar-top">
+          {/* HEADER ROW */}
+          <div className="sidebar-header-row">
+            <h3 className="sidebar-title">Resources</h3>
+
+            {/* Close button INSIDE header */}
+            {!collapsed && (
+              <button className="sidebar-close-btn" onClick={onToggleCollapse}>
+                <X size={18} />
               </button>
-              <button className="material-btn">
-                <ExternalLink size={16} />
-                PYQS
-              </button>
-            </div>
-            <div className="materials-grid">
-              <button className="material-btn primary">
-                <Book size={20} />
-                TextBook
-              </button>
-              <button className="material-btn ">
-                <Download size={20} />
-                Notes
-              </button>
-            </div>
+            )}
+          </div>
+
+          {/* TOP BUTTONS */}
+          <div className="sidebar-buttons">
+            <button className="sidebar-btn">
+              <FileText size={16} />
+              Syllabus
+            </button>
+            <button className="sidebar-btn">
+              <ExternalLink size={16} />
+              PYQs
+            </button>
+            <button className="sidebar-btn">
+              <Book size={16} />
+              Textbook
+            </button>
+            <button className="sidebar-btn">
+              <Download size={16} />
+              Notes
+            </button>
           </div>
         </div>
 
-        <div className="modules-section">
-          <h3>Modules</h3>
-          
+        {/* MODULES */}
+        <div className="sidebar-modules">
+          <h3 className="modules-heading">Modules</h3>
+
           {modules.length === 0 ? (
             <div className="no-modules">
               <p>Select a subject to view modules</p>
@@ -74,33 +90,42 @@ const Sidebar = ({
           ) : (
             <div className="modules-list">
               {modules.map((module) => (
-                <div key={module._id} className={`module-item ${expandedModules.has(module._id) ? 'expanded' : ''}`}>
+                <div
+                  key={module._id}
+                  className={`module-block ${
+                    expandedModules.has(module._id) ? "expanded" : ""
+                  }`}
+                >
                   <button
-                    className={`module-header ${selectedModule?._id === module._id ? 'active' : ''}`}
+                    className={`module-header ${
+                      selectedModule?._id === module._id ? "active" : ""
+                    }`}
                     onClick={() => handleModuleClick(module)}
                   >
-                    <div className="module-info">
-                      <span className="module-name">{module.order}. {module.name}</span>
-                      <span className="module-topics">
-                        {module.submodules.length} Submodules
-                      </span>
-                    </div>
-                    {expandedModules.has(module._id) ? 
-                      <ChevronDown size={16} /> : 
+                    <span className="module-name">
+                      {module.order}. {module.name}
+                    </span>
+
+                    {expandedModules.has(module._id) ? (
+                      <ChevronDown size={16} />
+                    ) : (
                       <ChevronRight size={16} />
-                    }
+                    )}
                   </button>
-                  
+
                   {expandedModules.has(module._id) && (
-                    <div className="submodules-list">
-                      
+                    <div className="submodule-container">
                       {module.submodules.map((submodule) => (
                         <button
                           key={submodule._id}
-                          className={`submodule-item ${selectedSubmodule?._id === submodule._id ? 'active' : ''}`}
+                          className={`submodule-item ${
+                            selectedSubmodule?._id === submodule._id
+                              ? "active"
+                              : ""
+                          }`}
                           onClick={() => onSubmoduleSelect(submodule)}
                         >
-                          <div className="submodule-indicator"></div>
+                          <div className="sub-bullet"></div>
                           <span>{submodule.title}</span>
                         </button>
                       ))}

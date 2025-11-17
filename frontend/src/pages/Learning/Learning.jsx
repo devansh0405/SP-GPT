@@ -31,7 +31,7 @@ const Learning = () => {
         const subjectList = res.data.data;
         setSubjects(subjectList);
 
-        if(subjectList.length > 0){
+        if (subjectList.length > 0) {
           setSelectedSubject(subjectList[0]);
           fetchModulesForSubject(subjectList[0]._id);
         }
@@ -71,23 +71,21 @@ const Learning = () => {
   };
 
   const handleModuleSelect = async (module) => {
-  setSelectedModule(module);
-  setSelectedSubmodule(null);
+    setSelectedModule(module);
+    setSelectedSubmodule(null);
 
     try {
-      // Send selected subject + module to backend
-      if (selectedSubject && selectedModule) {
+      if (selectedSubject && module) {
         await axios.post(`${API_BASE}/learning/selection`, {
           subjectId: selectedSubject._id,
-          moduleId: selectedModule._id,
+          moduleId: module._id,
         });
         console.log("Selection sent successfully");
       }
-    }catch (err) {
+    } catch (err) {
       console.error("Error sending selection:", err);
     }
   };
-
 
   const handleSubmoduleSelect = (submodule) => {
     setSelectedSubmodule(submodule);
@@ -98,7 +96,7 @@ const Learning = () => {
       <div className="learning-page">
         <div className="loading-container">
           <div className="loading-spinner"></div>
-          <p>Loading SP-GPT...</p>
+          <p>Loading LearnHub...</p>
         </div>
       </div>
     );
@@ -120,15 +118,16 @@ const Learning = () => {
 
   return (
     <div className="learning-page">
-      <LearningHeader />
 
       <main className="main-container">
+        {/* Horizontal Subject Cards */}
         <SubjectCards
           subjects={subjects}
           selectedSubject={selectedSubject}
           onSubjectSelect={handleSubjectSelect}
         />
 
+        {/* Sidebar + Main content */}
         <div className="content-wrapper">
           <Sidebar
             modules={modules}

@@ -46,10 +46,10 @@ export const module_list = [
         description:"Boost your career with smart tools for job search, resume and cover letter building, AI-powered interviews, personalized course recommendations, and an upskilling roadmap that integrates seamlessly with your academic tracker.",
         image: career
     },
-    {
+    /*{
         _id: 4,
         name: "Brainrot B.Tech",
         description:"dshfoho oijadoih oahhaf",
         image: text_to_speech_ai
-    }
+    }*/
 ]

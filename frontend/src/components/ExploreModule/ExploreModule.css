@@ -1,16 +1,17 @@
-.module-display{
-    margin-top: 35px;
+.module-display {
+  margin-top: 35px;
 }
 
-.module-display h2{
-    font-size: max(2vw, 24px);
-    font-weight: 600;
+.module-display h2 {
+  font-size: max(2vw, 24px);
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
-.module-display-list{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 30px;
-    gap: 45px;
-    row-gap: 40px;
+.module-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  justify-items: center;
 }
