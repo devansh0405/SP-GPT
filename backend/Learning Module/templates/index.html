@@ -57,7 +57,7 @@ async function sendRequest() {
     document.getElementById("responseBox").innerText = "Loading...";
 
     try {
-        const res = await fetch("http://localhost:5000/gemini", {
+        const res = await fetch("http://localhost:5000/chatbot", {
             method: "POST",
             body: formData
         });

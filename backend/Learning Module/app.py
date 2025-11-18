@@ -36,7 +36,7 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/gemini", methods=["POST"])
+@app.route("/chatbot", methods=["POST"])
 def gemini_wrapper():
     """
     multipart/form-data:
