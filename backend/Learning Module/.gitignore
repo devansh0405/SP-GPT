@@ -1,0 +1,81 @@
+# ----------------------------------------
+# Python
+# ----------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Byte-compiled / optimized / DLL files
+*.so
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+backend/Learning Module/client_secret.json
+
+# Distribution / packaging
+build/
+dist/
+develop-eggs/
+.eggs/
+*.egg-info/
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Django / Flask / other temp files
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# Flask session files, local configs
+*.pid
+config.py
+config_local.py
+.env
+.env.*
+.envrc
+
+# Logs
+*.log
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local secrets / credentials (IMPORTANT)
+client_secret.json
+credentials.json
+service_account.json
+
+# Cache / tooling
+.mypy_cache/
+.pyre/
+.pytype/
+__pypackages__/

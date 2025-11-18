@@ -1,0 +1,8 @@
+youtube_transcript_api
+python-dotenv
+pathlib
+urllib3
+google
+google-genai
+Flask
+Pillow

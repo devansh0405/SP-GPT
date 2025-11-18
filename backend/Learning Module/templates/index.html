@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gemini Wrapper Frontend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        input, textarea, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #responseBox {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f2f2f2;
+            border-radius: 6px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Gemini Flash Lite API Frontend</h2>
+
+<label>Your Prompt:</label>
+<textarea id="query" placeholder="Enter your prompt here..."></textarea>
+
+<label>YouTube URL (optional):</label>
+<input id="yt_url" type="text" placeholder="https://youtube.com/...">
+
+<label>Upload Image (optional):</label>
+<input id="image" type="file" accept="image/*">
+
+<button onclick="sendRequest()">Send</button>
+
+<h3>Response:</h3>
+<div id="responseBox">Waiting for response...</div>
+
+<script>
+async function sendRequest() {
+    const query = document.getElementById("query").value;
+    const yt_url = document.getElementById("yt_url").value;
+    const image = document.getElementById("image").files[0];
+
+    const formData = new FormData();
+    formData.append("query", query);
+    formData.append("yt_url", yt_url);
+    if (image) {
+        formData.append("image", image);
+    }
+
+    document.getElementById("responseBox").innerText = "Loading...";
+
+    try {
+        const res = await fetch("http://localhost:5000/gemini", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await res.json();
+        document.getElementById("responseBox").innerText = data.response || JSON.stringify(data);
+    } catch (e) {
+        document.getElementById("responseBox").innerText = "Error: " + e;
+    }
+}
+</script>
+
+</body>
+</html>
