@@ -37,3 +37,8 @@ def get_transcript(url: str) -> str :
     raw_transcript = transcript.to_raw_data()
     raw_transcript = " ".join(item['text'] for item in raw_transcript)
     return raw_transcript
+
+if __name__ == "__main__" :
+    url = input("Enter YouTube video URL: ")
+    transcript = get_transcript(url)
+    print(transcript)

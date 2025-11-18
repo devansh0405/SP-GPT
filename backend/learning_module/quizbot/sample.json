@@ -1,0 +1,29 @@
+{
+  "quiz_id": "string",
+  "title": "string",
+  "description": "string",
+  "metadata": {
+    "difficulty": "easy | medium | hard | mixed",
+    "topic": "string",
+    "subtopics": ["string"],
+    "source_context_ids": ["string"], 
+    "estimated_time_minutes": 5
+  },
+  "questions": [
+    {
+      "question_id": "string",
+      "type": "multiple_choice | true_false | short_answer | fill_in_blank | multi_select",
+      "difficulty": "easy | medium | hard",
+      "question_text": "string",
+      "options": [
+        {
+          "option_id": "string",
+          "text": "string"
+        }
+      ],
+      "correct_answers": ["option_id or freeform text"],
+      "explanation": "string",
+      "context_reference_ids": ["string"]
+    }
+  ]
+}

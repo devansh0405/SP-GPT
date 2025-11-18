@@ -57,7 +57,7 @@ async function sendRequest() {
     document.getElementById("responseBox").innerText = "Loading...";
 
     try {
-        const res = await fetch("http://localhost:5000/chatbot", {
+        const res = await fetch("http://localhost:5000/learning_bot", {
             method: "POST",
             body: formData
         });

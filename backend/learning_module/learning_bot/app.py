@@ -6,7 +6,7 @@ from PIL import Image
 import io
 import os
 from dotenv import load_dotenv
-from utils.get_captions import get_transcript  # rename to avoid recursion
+from utils.get_captions import get_transcript
 
 load_dotenv()
 
@@ -36,7 +36,7 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/chatbot", methods=["POST"])
+@app.route("/learning_bot", methods=["POST"])
 def gemini_wrapper():
     """
     multipart/form-data:
@@ -57,35 +57,28 @@ def gemini_wrapper():
         transcript = get_transcript(yt_url)
         prompt = f"YOUTUBE_TRANSCRIPT: {transcript}\nQuery: {query}"
         response = chat.send_message(prompt)
-        print(response)
         return jsonify({"response": response.text})
 
     # --- CASE 2: YouTube + Image ---
     if yt_url and image_file:
         transcript = get_transcript(yt_url)
         img_part = read_image(image_file)
-        print(type(img_part))
         prompt = transcript + query
         response = chat.send_message([prompt, img_part])
-        print(response)
         return jsonify({"response": response.text})
 
     # --- CASE 3: Image only ---
     if not yt_url and image_file:
         img_part = read_image(image_file)
-        print(type(img_part))
         response = chat.send_message([query, img_part])
-        print(response)
         return jsonify({"response": response.text})
 
     # --- CASE 4: Text only ---
     if not yt_url and not image_file:
         response = chat.send_message([query])
-        print(response)
         return jsonify({"response": response.text})
 
     return jsonify({"error": "Unexpected condition"}), 500
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
