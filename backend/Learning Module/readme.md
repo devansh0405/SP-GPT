@@ -9,9 +9,6 @@ A Flask application serving as the backend for the Learning Module. It handles i
 ### **In-Memory Processing**
 - Handles file uploads using `io.BytesIO` to avoid disk I/O.
 
-### **Image Manipulation**
-- Uses **Pillow** to analyze image format/size and generate thumbnails.
-
 ### **Chatbot API**
 - Specialized endpoint for querying **YouTube content** with optional **image context**.
 
@@ -38,7 +35,18 @@ Main endpoint for the learning assistant. Accepts:
 
 ## 🛠 Installation
 
-Ensure you have Python installed. Install the required dependencies:
+Ensure you have Python3.12.12 installed. Install the required dependencies:
+
+For ubuntu
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+For windows
+```bash
+python3.12 -m venv venv
+venv\Scripts\activate
+```
 
 ```bash
 pip install -r requirements.txt
